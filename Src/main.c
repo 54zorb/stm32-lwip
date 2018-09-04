@@ -115,6 +115,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    MX_LWIP_Process();
     App_process();
   /* USER CODE END WHILE */
 
