@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc; ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F4xx/Include; ../Drivers/CMSIS/Include; ..\user\app;../Middlewares/Third_Party/LwIP/src/include;../Middlewares/Third_Party/LwIP/system;../Middlewares/Third_Party/LwIP/src/include/netif/ppp;../Middlewares/Third_Party/LwIP/src/include/lwip;../Middlewares/Third_Party/LwIP/src/include/lwip/apps;../Middlewares/Third_Party/LwIP/src/include/lwip/priv;../Middlewares/Third_Party/LwIP/src/include/lwip/prot;../Middlewares/Third_Party/LwIP/src/include/netif;../Middlewares/Third_Party/LwIP/src/include/posix;../Middlewares/Third_Party/LwIP/src/include/posix/sys;../Middlewares/Third_Party/LwIP/system/arch</IncludePath>
+              <IncludePath>../Inc;    ../Drivers/STM32F4xx_HAL_Driver/Inc;    ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;    ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;    ../Drivers/CMSIS/Include;    ..\user\app;   ../Middlewares/Third_Party/LwIP/src/include;   ../Middlewares/Third_Party/LwIP/system;   ../Middlewares/Third_Party/LwIP/src/include/netif/ppp;   ../Middlewares/Third_Party/LwIP/src/include/lwip;   ../Middlewares/Third_Party/LwIP/src/include/lwip/apps;   ../Middlewares/Third_Party/LwIP/src/include/lwip/priv;   ../Middlewares/Third_Party/LwIP/src/include/lwip/prot;   ../Middlewares/Third_Party/LwIP/src/include/netif;   ../Middlewares/Third_Party/LwIP/src/include/posix;   ../Middlewares/Third_Party/LwIP/src/include/posix/sys;   ../Middlewares/Third_Party/LwIP/system/arch</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -416,16 +416,6 @@
               <FileName>startup_stm32f407xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>startup_stm32f407xx.s</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>user/app</GroupName>
-          <Files>
-            <File>
-              <FileName>app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\user\app\app.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -921,6 +911,26 @@
               <FileName>mqtt.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>user/app</GroupName>
+          <Files>
+            <File>
+              <FileName>app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\app.c</FilePath>
+            </File>
+            <File>
+              <FileName>udp_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\udp_server.c</FilePath>
+            </File>
+            <File>
+              <FileName>udp_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\udp_client.c</FilePath>
             </File>
           </Files>
         </Group>
