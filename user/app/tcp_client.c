@@ -110,14 +110,25 @@ void tcp_client_init(void)
 
     /* 创建tcp控制块 */
     tpcb = tcp_new();
-
-    /* 绑定本地端号和IP地址 */
-    tcp_bind(tpcb, IP_ADDR_ANY, TCP_LOCAL_PORT);
-
+    
     if (tpcb != NULL)
     {
-        /* 连接服务器 */
-        tcp_connect(tpcb, &serverIp, TCP_REMOTE_PORT, tcp_client_connected);
+        err_t err;
+        
+        /* 绑定本地端号和IP地址 */
+        err = tcp_bind(tpcb, IP_ADDR_ANY, TCP_LOCAL_PORT);
+
+        if (err == ERR_OK)
+        {
+            /* 连接服务器 */
+            tcp_connect(tpcb, &serverIp, TCP_REMOTE_PORT, tcp_client_connected);
+        }
+        else
+        {
+            memp_free(MEMP_TCP_PCB, tpcb);
+            
+            printf("can not bind pcb\r\n");
+        }
     }
 }
 

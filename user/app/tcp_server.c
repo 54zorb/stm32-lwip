@@ -114,22 +114,37 @@ void tcp_server_init(void)
     /* 创建tcp控制块 */
     tpcb = tcp_new();
 
-    /* 绑定端口接收，接收对象为所有ip地址 */
-    tcp_bind(tpcb, IP_ADDR_ANY, TCP_LOCAL_PORT);
+    if (tpcb != NULL)
+    {
+        err_t err;
+        
+        /* 绑定端口接收，接收对象为所有ip地址 */
+        err = tcp_bind(tpcb, IP_ADDR_ANY, TCP_LOCAL_PORT);
 
-    /* 监听 */
-    tpcb = tcp_listen(tpcb);
+        if (err == ERR_OK)
+        {
+            /* 监听 */
+            tpcb = tcp_listen(tpcb);
 
-    /* 注册接入回调函数 */
-    tcp_accept(tpcb, tcp_server_accept);
-    
-    printf("tcp server listening\r\n");
-    printf("tcp server ip:%d:%d:%d:%d prot:%d\r\n",
-        *((uint8_t *)&ipaddr.addr),
-        *((uint8_t *)&ipaddr.addr + 1),
-        *((uint8_t *)&ipaddr.addr + 2),
-        *((uint8_t *)&ipaddr.addr + 3),
-        tpcb->local_port);
+            /* 注册接入回调函数 */
+            tcp_accept(tpcb, tcp_server_accept);
+            
+            printf("tcp server listening\r\n");
+            printf("tcp server ip:%d:%d:%d:%d prot:%d\r\n",
+                *((uint8_t *)&ipaddr.addr),
+                *((uint8_t *)&ipaddr.addr + 1),
+                *((uint8_t *)&ipaddr.addr + 2),
+                *((uint8_t *)&ipaddr.addr + 3),
+                tpcb->local_port);
+        }
+        else
+        {
+            memp_free(MEMP_TCP_PCB, tpcb);
+            
+            printf("can not bind pcb\r\n");
+        }
+
+    }
 }
 
 /******************************** END OF FILE ********************************/

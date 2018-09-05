@@ -90,6 +90,8 @@ void udp_server_init(void)
         {
             /* É¾³ý¿ØÖÆ¿é */
             udp_remove(upcb);
+            
+            printf("can not bind pcb\r\n");
         }
     }
 }

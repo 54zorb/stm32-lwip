@@ -124,6 +124,14 @@ void udp_client_init(void)
             
             /* ·¢ËÍudpÊý¾Ý */
             udp_client_send("udp client connected");
+            
+            printf("udp client connected\r\n");
+        }
+        else
+        {
+            udp_remove(upcb);
+            
+            printf("can not connect udp pcb\r\n");
         }
     }
 }
