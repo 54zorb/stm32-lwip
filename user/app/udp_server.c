@@ -37,7 +37,7 @@ static void udp_server_receive_callback(void *arg, struct udp_pcb *upcb,
 //    udp_sendto(upcb, p, addr, port);
     
     /* 打印接收到的数据 */
-    printf("get msg from %d:%d:%d:%d prot:%d:\r\n",
+    printf("get msg from %d:%d:%d:%d port:%d:\r\n",
         *((uint8_t *)&addr->addr), *((uint8_t *)&addr->addr + 1),
         *((uint8_t *)&addr->addr + 2), *((uint8_t *)&addr->addr + 3), port);
     

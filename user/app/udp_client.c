@@ -42,7 +42,7 @@ static void udp_receive_callback(void *arg, struct udp_pcb *upcb,
 //    udp_sendto(upcb, p, addr, port);
     
     /* 打印接收到的数据 */
-    printf("get msg from %d:%d:%d:%d prot:%d:\r\n",
+    printf("get msg from %d:%d:%d:%d port:%d:\r\n",
         *((uint8_t *)&addr->addr), *((uint8_t *)&addr->addr + 1),
         *((uint8_t *)&addr->addr + 2), *((uint8_t *)&addr->addr + 3), port);
     
@@ -86,11 +86,11 @@ void udp_client_send(char *pData)
 }
 
 /******************************************************************************
- * 描述  : udp客户端连接到udp服务器
+ * 描述  : 创建udp客户端
  * 参数  : 无
  * 返回  : 无
 ******************************************************************************/
-void udp_client_connect(void)
+void udp_client_init(void)
 {
     ip_addr_t serverIP;
     ip_addr_t clientIP;

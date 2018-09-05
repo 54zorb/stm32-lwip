@@ -932,6 +932,16 @@
               <FileType>1</FileType>
               <FilePath>..\user\app\udp_client.c</FilePath>
             </File>
+            <File>
+              <FileName>tcp_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\tcp_client.c</FilePath>
+            </File>
+            <File>
+              <FileName>tcp_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\tcp_server.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

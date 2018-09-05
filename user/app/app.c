@@ -25,10 +25,16 @@
 void App_init(void)
 {
     /* udp客户端 */
-    udp_client_connect();
+    //udp_client_init();
     
     /* udp服务器 */
     //udp_server_init();
+    
+    /* tcp客户端 */
+    //tcp_client_init();
+    
+    /* tcp服务器 */
+    //tcp_server_init();
     
     printf("hello zorb\r\n");
 }
