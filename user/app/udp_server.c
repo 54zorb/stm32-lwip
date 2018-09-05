@@ -43,10 +43,18 @@ static void udp_server_receive_callback(void *arg, struct udp_pcb *upcb,
     
     if (p != NULL)
     {
-        for (i = 0; i < p->len; i++)
+        struct pbuf *ptmp = p;
+        
+        while(ptmp != NULL)
         {
-            printf("%c", *((char *)p->payload + i));
+            for (i = 0; i < p->len; i++)
+            {
+                printf("%c", *((char *)p->payload + i));
+            }
+            
+            ptmp = p->next;
         }
+        
         
         printf("\r\n");
     }

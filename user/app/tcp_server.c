@@ -39,6 +39,8 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb,
     
     if (p != NULL)
     {
+        struct pbuf *ptmp = p;
+        
         /* 打印接收到的数据 */
         printf("get msg from %d:%d:%d:%d port:%d:\r\n",
             *((uint8_t *)&tpcb->remote_ip.addr),
@@ -47,12 +49,19 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb,
             *((uint8_t *)&tpcb->remote_ip.addr + 3),
             tpcb->remote_port);
         
-        for (i = 0; i < p->len; i++)
+        while(ptmp != NULL)
         {
-            printf("%c", *((char *)p->payload + i));
+            for (i = 0; i < p->len; i++)
+            {
+                printf("%c", *((char *)p->payload + i));
+            }
+            
+            ptmp = p->next;
         }
         
         printf("\r\n");
+        
+        tcp_recved(tpcb, p->tot_len);
         
         /* 释放缓冲区数据 */
         pbuf_free(p);
@@ -60,6 +69,8 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb,
     else if (err == ERR_OK)
     {
         printf("tcp client closed\r\n");
+        
+        tcp_recved(tpcb, p->tot_len);
         
         return tcp_close(tpcb);
     }
@@ -113,7 +124,7 @@ void tcp_server_init(void)
     tcp_accept(tpcb, tcp_server_accept);
     
     printf("tcp server listening\r\n");
-    printf("tcp server ip : %d:%d:%d:%d prot:%d\r\n",
+    printf("tcp server ip:%d:%d:%d:%d prot:%d\r\n",
         *((uint8_t *)&ipaddr.addr),
         *((uint8_t *)&ipaddr.addr + 1),
         *((uint8_t *)&ipaddr.addr + 2),
