@@ -114,10 +114,10 @@ void tcp_server_init(void)
     
     printf("tcp server listening\r\n");
     printf("tcp server ip : %d:%d:%d:%d prot:%d\r\n",
-        *((uint8_t *)&tpcb->local_ip.addr),
-        *((uint8_t *)&tpcb->local_ip.addr + 1),
-        *((uint8_t *)&tpcb->local_ip.addr + 2),
-        *((uint8_t *)&tpcb->local_ip.addr + 3),
+        *((uint8_t *)&ipaddr.addr),
+        *((uint8_t *)&ipaddr.addr + 1),
+        *((uint8_t *)&ipaddr.addr + 2),
+        *((uint8_t *)&ipaddr.addr + 3),
         tpcb->local_port);
 }
 
