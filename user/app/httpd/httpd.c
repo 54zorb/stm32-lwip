@@ -1954,6 +1954,8 @@ static err_t http_poll(void *arg, struct tcp_pcb *pcb)
  */
 static err_t http_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err)
 {
+  struct pbuf *ptmp = p;
+  uint32_t i;
   err_t parsed = ERR_ABRT;
   struct http_state *hs = (struct http_state *)arg;
   LWIP_DEBUGF(HTTPD_DEBUG | LWIP_DBG_TRACE, ("http_recv: pcb=%p pbuf=%p err=%s\n", (void*)pcb,
@@ -1974,6 +1976,26 @@ static err_t http_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t err
     return ERR_OK;
   }
 
+    /* 打印接收到的数据 */
+    printf("get msg from %d:%d:%d:%d port:%d:\r\n",
+        *((uint8_t *)&pcb->remote_ip.addr),
+        *((uint8_t *)&pcb->remote_ip.addr + 1),
+        *((uint8_t *)&pcb->remote_ip.addr + 2),
+        *((uint8_t *)&pcb->remote_ip.addr + 3),
+        pcb->remote_port);
+    
+    while(ptmp != NULL)
+    {
+        for (i = 0; i < p->len; i++)
+        {
+            printf("%c", *((char *)p->payload + i));
+        }
+        
+        ptmp = p->next;
+    }
+    
+    printf("\r\n");
+  
 #if LWIP_HTTPD_SUPPORT_POST && LWIP_HTTPD_POST_MANUAL_WND
   if (hs->no_auto_wnd) {
      hs->unrecved_bytes += p->tot_len;
