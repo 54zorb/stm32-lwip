@@ -36,6 +36,9 @@ void App_init(void)
     /* tcp服务器 */
     //tcp_server_init();
     
+    /* http服务器 */
+    httpd_init();
+    
     printf("hello zorb\r\n");
 }
 
