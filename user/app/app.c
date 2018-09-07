@@ -37,7 +37,13 @@ void App_init(void)
     //tcp_server_init();
     
     /* http服务器 */
-    httpd_init();
+    //httpd_init();
+    
+    /* 以太网帧发送测试1 */
+    //ethernet_sendtest1();
+    
+    /* 以太网帧发送测试2 */
+    //ethernet_sendtest2();
     
     printf("hello zorb\r\n");
 }

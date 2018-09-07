@@ -100,11 +100,9 @@ void udp_client_send(char *pData)
 void udp_client_init(void)
 {
     ip_addr_t serverIP;
-    ip_addr_t clientIP;
     err_t err;
 
     IP4_ADDR(&serverIP, 192, 168, 2, 194);
-    IP4_ADDR(&clientIP, 192, 168, 2, 66);
 
     /* ´´½¨udp¿ØÖÆ¿é */
     upcb = udp_new();

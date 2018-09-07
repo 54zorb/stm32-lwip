@@ -957,6 +957,11 @@
               <FileType>1</FileType>
               <FilePath>..\user\app\httpd\httpd_cgi_ssi.c</FilePath>
             </File>
+            <File>
+              <FileName>ethernet_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user\app\ethernet_test.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

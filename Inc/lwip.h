@@ -71,6 +71,7 @@
 
 /* USER CODE BEGIN 0 */
 extern ip4_addr_t ipaddr;
+extern struct netif gnetif;
 /* USER CODE END 0 */
 
 /* Global Variables ----------------------------------------------------------*/
